@@ -35,7 +35,7 @@ namespace tcp_connect
         is_connect_ = false;
     }
 
-    bool TCPConnect::tcp_init()
+    bool TCPConnect::tcp_connect()
     {
         if (is_connect_)
         {
@@ -99,7 +99,7 @@ namespace tcp_connect
     {
         if (!is_connect_)
         {
-            return tcp_init();
+            return tcp_connect();
         }
 
         char test_buf = 0;
@@ -109,13 +109,13 @@ namespace tcp_connect
         {
             printf("连接已被服务器关闭\n");
             is_connect_ = false;
-            return tcp_init();
+            return tcp_connect();
         }
         else if (result < 0 && errno != EAGAIN && errno != EWOULDBLOCK)
         {
             printf("连接可能已失效 (错误: %s)\n", strerror(errno));
             is_connect_ = false;
-            return tcp_init();
+            return tcp_connect();
         }
         else
         {

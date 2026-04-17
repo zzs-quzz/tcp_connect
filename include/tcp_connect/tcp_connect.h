@@ -19,7 +19,7 @@ namespace tcp_connect
     public:
         TCPConnect(const std::string &ip, const int &port);
         ~TCPConnect();
-        bool tcp_init();
+        bool tcp_connect();
         void tcp_disconnect();
         bool ensure_connect();
         std::string create_asdu(std::string type);
