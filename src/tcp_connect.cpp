@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <thread>
 
-namespace tcp_connect
+namespace tcpconnect
 {
     TCPConnect::TCPConnect(const std::string &ip, const int &port)
     {
@@ -298,6 +298,16 @@ namespace tcp_connect
         else
         {
             status = asdu.substr(status_start + 8, status_end - status_start - 8);
+            if (status == "0" || status == "-1")
+            {
+                printf("机器人未导航\n");
+                is_nav_ = false;
+            }
+            else
+            {
+                printf("机器人正在导航\n");
+                is_nav_ = true;
+            }
         }
 
         // 查找ErrorCode字段

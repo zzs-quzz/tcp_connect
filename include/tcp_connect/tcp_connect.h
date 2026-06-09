@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-namespace tcp_connect
+namespace tcpconnect
 {
     class TCPConnect
     {
@@ -15,6 +15,9 @@ namespace tcp_connect
         bool is_connect_;       // 是否连接
         uint16_t message_id_;   // 报文id，从0开始递增
         std::string type_;      // 任务类型
+
+    public:
+        bool is_nav_;
 
     public:
         TCPConnect(const std::string &ip, const int &port);
